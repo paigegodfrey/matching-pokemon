@@ -1,10 +1,11 @@
 import Square from '../Square/Square';
 
-const SquareList = () => {
+const SquareList = ({ squares }) => {
   return (
     <div className="SquareList">
-      SQUARE LIST
-      <Square />
+      {squares.map(square => {
+        <Square color={square.color} height={square.height} />
+      })}
     </div>
   );
 }

@@ -2,11 +2,18 @@
 const Square = ({ color, height }) => {
   let units = 'px';
   let squareSize = height + units;
-  
+
   return (
-    // width is set to height, since squares have equal height and width
-    <p className="Square" style={{ backgroundColor: color, height: squareSize, width: squareSize }}>
-      SQUARE
+    <p
+      className="Square"
+      style={{
+        backgroundColor: color,
+        height: squareSize,
+        width: squareSize,
+        border: 'black solid 2px',
+      }}>
+        <button onSubmit={''}>Duplicate</button>
+        <button onSubmit={''}>Delete</button>
     </p >
   );
 }

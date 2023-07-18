@@ -4,9 +4,13 @@ import SquareList from '../SquareList/SquareList';
 
 const App = () => {
   const [squares, setSquares] = useState([]);
-
-  function addSquare(newSquare) {
+  
+  const addSquare = (newSquare) => {
     setSquares(squares => [...squares, newSquare]);
+  }
+
+  const clearSquares = () => {
+    setSquares([]);
   }
 
   return (
@@ -17,7 +21,7 @@ const App = () => {
         </h1>
       </div>
       <SquareForm addSquare={addSquare} />
-      <SquareList squares={squares} />
+      <SquareList squares={squares} clearSquares={clearSquares} />
     </div>
   );
 }

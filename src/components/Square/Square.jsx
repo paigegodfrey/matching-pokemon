@@ -1,10 +1,13 @@
-const Square = ({color, height}) => {
-
+/* eslint-disable react/prop-types */
+const Square = ({ color, height }) => {
+  let units = 'px';
+  let squareSize = height + units;
+  
   return (
     // width is set to height, since squares have equal height and width
-    <div className="Square" style={{ backgroundColor: { color }, height: { height }, width: { height } }}>
+    <p className="Square" style={{ backgroundColor: color, height: squareSize, width: squareSize }}>
       SQUARE
-    </div >
+    </p >
   );
 }
 

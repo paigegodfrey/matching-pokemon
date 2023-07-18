@@ -5,6 +5,10 @@ import SquareList from '../SquareList/SquareList';
 const App = () => {
   const [squares, setSquares] = useState([]);
 
+  function addSquare(newSquare) {
+    setSquares(squares => [...squares, newSquare]);
+  }
+
   return (
     <div className="App">
       <div className="main-header-container">
@@ -12,7 +16,7 @@ const App = () => {
           Square Generator
         </h1>
       </div>
-      <SquareForm />
+      <SquareForm addSquare={addSquare} />
       <SquareList squares={squares} />
     </div>
   );

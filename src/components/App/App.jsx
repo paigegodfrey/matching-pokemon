@@ -20,8 +20,8 @@ const App = () => {
           Square Generator
         </h1>
       </div>
-      <SquareForm addSquare={addSquare} />
-      <SquareList squares={squares} clearSquares={clearSquares} />
+      <SquareForm addSquare={addSquare} clearSquares={clearSquares}/>
+      <SquareList squares={squares} />
     </div>
   );
 }

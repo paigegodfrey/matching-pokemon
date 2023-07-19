@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const Square = ({ backgroundColor, size }) => {
+const Square = ({ id, backgroundColor, size, deleteSquare }) => {
 
   // css style variables
   let squareSize = String(size) + 'px';
@@ -16,7 +16,7 @@ const Square = ({ backgroundColor, size }) => {
         marginTop,
         border
       }}>
-        <button>Delete</button>
+        <button onClick={() => deleteSquare(id)}>Delete</button>
     </p >
   );
 }

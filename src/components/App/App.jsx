@@ -13,6 +13,10 @@ const App = () => {
     setSquares([]);
   }
 
+  const deleteSquare = (id) => {
+    setSquares((prevSquares) => prevSquares.filter((square) => square.id !== id)); 
+  }
+
   return (
     <div className='App'>
       <div className='main-header-container'>
@@ -21,7 +25,7 @@ const App = () => {
         </h1>
       </div>
       <SquareForm addSquare={addSquare} clearSquares={clearSquares}/>
-      <SquareList squares={squares} />
+      <SquareList squares={squares} deleteSquare={deleteSquare}/>
     </div>
   );
 }

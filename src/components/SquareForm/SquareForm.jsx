@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 // https://codesandbox.io/s/react-select-map-1qdik?file=/src/App.js:0-1099
 const SquareForm = ({ addSquare, clearSquares }) => {
@@ -36,10 +36,10 @@ const SquareForm = ({ addSquare, clearSquares }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleSubmit = (event) => {
-    
     event.preventDefault();
     addSquare(
       {
+        id: uuidv4(),
         color: formData.color,
         size: formData.size,
       }

@@ -36,6 +36,7 @@ const SquareForm = ({ addSquare, clearSquares }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleSubmit = (event) => {
+    
     event.preventDefault();
     addSquare(
       {
@@ -54,15 +55,15 @@ const SquareForm = ({ addSquare, clearSquares }) => {
   }
 
   return (
-    <div className="SquareForm">
+    <div className='SquareForm'>
       <form onSubmit={handleSubmit}>
-        <select name="color" onChange={handleChange}>
+        <select name='color' onChange={handleChange}>
           <option value={'Select Color'}>-- Select Color --</option>
           {colorOptions.map((color, idx) => (
             <option key={idx} value={color.value}>{color.label}</option>
           ))}
         </select>
-        <select name="size" onChange={handleChange}>
+        <select name='size' onChange={handleChange}>
           <option value={'Select Size'}>-- Select Size --</option>
           {sizeOptions.map((size, idx) => (
             <option key={idx} value={size}>{size}</option>

@@ -8,7 +8,7 @@ const Square = ({ backgroundColor, size }) => {
 
   return (
     <p
-      className="Square"
+      className='Square'
       style={{
         backgroundColor,
         height: squareSize,
@@ -16,6 +16,7 @@ const Square = ({ backgroundColor, size }) => {
         marginTop,
         border
       }}>
+        <button>Delete</button>
     </p >
   );
 }

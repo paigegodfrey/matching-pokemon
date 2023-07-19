@@ -35,22 +35,27 @@ const SquareForm = ({ addSquare, clearSquares }) => {
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
 
-  const handleOnSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    addSquare({ color: selectedColor, size: selectedSize });
+    addSquare(
+      {
+        color: selectedColor,
+        size: selectedSize,
+      }
+    );
   }
 
-  let handleColorChange = (e) => {
-    setSelectedColor(e.target.value);
+  const handleColorChange = (event) => {
+    setSelectedColor(event.target.value);
   };
 
-  let handleSizeChange = (e) => {
-    setSelectedSize(e.target.value);
+  const handleSizeChange = (event) => {
+    setSelectedSize(event.target.value);
   };
 
   return (
     <div className="SquareForm">
-      <form onSubmit={handleOnSubmit}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="color">Color:</label>
         <select onChange={handleColorChange}>
           <option value={'Select Color'}>-- Select Color --</option>
@@ -65,13 +70,15 @@ const SquareForm = ({ addSquare, clearSquares }) => {
             <option key={idx} value={size}>{size}</option>
           ))}
         </select>
-        <button type='submit'>
+        <button>
           Create
         </button>
+      </form>
+      <div>
         <button className='reset-button' onClick={clearSquares}>
           Clear All
         </button>
-      </form>
+      </div>
     </div >
   );
 }

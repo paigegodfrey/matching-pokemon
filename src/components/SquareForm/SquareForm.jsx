@@ -35,6 +35,10 @@ const SquareForm = ({ addSquare, clearSquares }) => {
   const INITIAL_FORM_DATA = { color: '', size: '' }
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
+  const validSelection = () => {
+    return Object.values(formData).every(x => x !== '');
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     addSquare(
@@ -69,7 +73,7 @@ const SquareForm = ({ addSquare, clearSquares }) => {
             <option key={idx} value={size}>{size}</option>
           ))}
         </select>
-        <button>
+        <button disabled={!validSelection()}>
           Create
         </button>
       </form>

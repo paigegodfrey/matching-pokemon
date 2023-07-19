@@ -28,9 +28,23 @@ const SquareForm = ({ addSquare, clearSquares }) => {
       value: 'purple',
       label: '🟪 Purple'
     },
-  ]
+  ];
 
-  const sizeOptions = [100, 150, 200];
+  // size refers to height/width in px
+  const sizeOptions = [
+    {
+      value: 100,
+      label: 'Small'
+    },
+    {
+      value: 150,
+      label: 'Medium'
+    },
+    {
+      value: 200,
+      label: 'Large'
+    }
+  ];
 
   const INITIAL_FORM_DATA = { color: '', size: '' }
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
@@ -70,7 +84,7 @@ const SquareForm = ({ addSquare, clearSquares }) => {
         <select name='size' onChange={handleChange}>
           <option value={'Select Size'}>-- Select Size --</option>
           {sizeOptions.map((size, idx) => (
-            <option key={idx} value={size}>{size}</option>
+            <option key={idx} value={size.value}>{size.label}</option>
           ))}
         </select>
         <button disabled={!validSelection()}>

@@ -4,17 +4,13 @@ import SquareList from '../SquareList/SquareList';
 
 const App = () => {
   const [squares, setSquares] = useState([]);
-  
+
   const addSquare = (newSquare) => {
-    setSquares(squares => [...squares, newSquare]);
+    setSquares(prevSquares => [...prevSquares, newSquare]);
   }
 
   const clearSquares = () => {
     setSquares([]);
-  }
-
-  const deleteSquare = (id) => {
-    setSquares((prevSquares) => prevSquares.filter((square) => square.id !== id)); 
   }
 
   return (
@@ -24,8 +20,14 @@ const App = () => {
           Square Generator
         </h1>
       </div>
-      <SquareForm addSquare={addSquare} clearSquares={clearSquares}/>
-      <SquareList squares={squares} deleteSquare={deleteSquare}/>
+      <SquareForm
+        addSquare={addSquare}
+        clearSquares={clearSquares}
+      />
+      <SquareList
+        squares={squares}
+        setSquares={setSquares}
+      />
     </div>
   );
 }

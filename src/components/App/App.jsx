@@ -9,10 +9,6 @@ const App = () => {
     setSquares(prevSquares => [...prevSquares, newSquare]);
   }
 
-  const clearSquares = () => {
-    setSquares([]);
-  }
-
   return (
     <div className='App'>
       <div className='main-header-container'>
@@ -20,13 +16,8 @@ const App = () => {
           Square Generator
         </h1>
       </div>
-      <SquareForm
-        addSquare={addSquare}
-        clearSquares={clearSquares}
-      />
-      <SquareList
-        squares={squares}
-        setSquares={setSquares}
+      <SquareForm addSquare={addSquare} />
+      <SquareList squares={squares} setSquares={setSquares}
       />
     </div>
   );

@@ -7,6 +7,8 @@ const SquareList = ({ squares, setSquares }) => {
     setSquares((prevSquares) => prevSquares.filter((square) => square.id !== id));
   }
 
+  const clearSquares = () => setSquares([]);
+
   const duplicateSquare = (square, id) => {
     const squaresCopy = [...squares];
     const idx = squares.findIndex((sqr) => sqr.id === id);
@@ -20,14 +22,21 @@ const SquareList = ({ squares, setSquares }) => {
 
   return (
     <div className='SquareList'>
+      <div>
+        <button className='reset-button' onClick={clearSquares}>
+          Clear All
+        </button>
+      </div>
       <div className='display-container' style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {squares.map((square) => (
-          <Square
-            square={square}
-            duplicateSquare={duplicateSquare}
-            deleteSquare={deleteSquare}
-            key={square.id} />
-        ))}
+        <div>
+          {squares.map((square) => (
+            <Square
+              square={square}
+              duplicateSquare={duplicateSquare}
+              deleteSquare={deleteSquare}
+              key={square.id} />
+          ))}
+        </div>
       </div>
     </div>
   );

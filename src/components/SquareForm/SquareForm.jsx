@@ -91,11 +91,6 @@ const SquareForm = ({ addSquare, clearSquares }) => {
           Create
         </button>
       </form>
-      <div>
-        <button className='reset-button' onClick={clearSquares}>
-          Clear All
-        </button>
-      </div>
     </div >
   );
 }

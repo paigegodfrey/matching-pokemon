@@ -22,21 +22,15 @@ const SquareList = ({ squares, setSquares }) => {
 
   return (
     <div className='SquareList'>
-      <div>
-        <button className='reset-button' onClick={clearSquares}>
-          Clear All
-        </button>
-      </div>
-      <div className='display-container' style={{ display: 'flex', flexWrap: 'wrap' }}>
-        <div>
-          {squares.map((square) => (
-            <Square
-              square={square}
-              duplicateSquare={duplicateSquare}
-              deleteSquare={deleteSquare}
-              key={square.id} />
-          ))}
-        </div>
+      <div className='display-container' style={{display: 'flex', flexWrap: 'wrap'}}>
+        {squares.map((square) => (
+          <Square
+            id={square?.id}
+            deleteSquare={deleteSquare}
+            backgroundColor={square?.color}
+            size={square?.size}
+            key={square?.id} />
+        ))}
       </div>
     </div>
   );

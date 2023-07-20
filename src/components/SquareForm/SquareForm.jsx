@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 // https://codesandbox.io/s/react-select-map-1qdik?file=/src/App.js:0-1099
-const SquareForm = ({ addSquare, clearSquares }) => {
+const SquareForm = ({ addSquare }) => {
   const colorOptions = [
     {
       value: 'red',
@@ -30,7 +30,7 @@ const SquareForm = ({ addSquare, clearSquares }) => {
     },
   ];
 
-  // size refers to height/width in px
+  // value refers to height/width in px
   const sizeOptions = [
     {
       value: 100,

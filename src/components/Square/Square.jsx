@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 const Square = ({ square, duplicateSquare, deleteSquare }) => {
   const { id, color, size } = square;
+  
   // css style variables
   let squareSize = String(size) + 'px';
   let marginTop = '5px';

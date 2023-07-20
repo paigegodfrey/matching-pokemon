@@ -3,11 +3,11 @@ import { v4 as uuidv4 } from 'uuid';
 import Square from '../Square/Square';
 
 const SquareList = ({ squares, setSquares }) => {
+  const clearSquares = () => setSquares([]);
+
   const deleteSquare = (id) => {
     setSquares((prevSquares) => prevSquares.filter((square) => square.id !== id));
   }
-
-  const clearSquares = () => setSquares([]);
 
   const duplicateSquare = (square, id) => {
     const squaresCopy = [...squares];
@@ -22,13 +22,17 @@ const SquareList = ({ squares, setSquares }) => {
 
   return (
     <div className='SquareList'>
-      <div className='display-container' style={{display: 'flex', flexWrap: 'wrap'}}>
+      <div>
+        <button className='reset-button' onClick={clearSquares}>
+          Clear All
+        </button>
+      </div>
+      <div className='display-container' style={{ display: 'flex', flexWrap: 'wrap' }}>
         {squares.map((square) => (
           <Square
-            id={square?.id}
             deleteSquare={deleteSquare}
-            backgroundColor={square?.color}
-            size={square?.size}
+            duplicateSquare={duplicateSquare}
+            square={square}
             key={square?.id} />
         ))}
       </div>

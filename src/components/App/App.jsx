@@ -1,24 +1,29 @@
 import { useState } from 'react';
-import SquareForm from '../SquareForm/SquareForm';
-import SquareList from '../SquareList/SquareList';
+import { v4 as uuidv4 } from 'uuid';
+import GameForm from '../GameForm/GameForm';
+import GameContainer from '../GameContainer/GameContainer';
 
 const App = () => {
-  const [squares, setSquares] = useState([]);
+  const [cards, setCards] = useState([]);
 
-  const addSquare = (newSquare) => {
-    setSquares(prevSquares => [...prevSquares, newSquare]);
+  const generatePairs = (numPairs) => {
+    let numPair = 1;
+    while (numPair <= numPairs) {
+      let newPair = { id: uuidv4() }
+      setCards((prevCards) => [...prevCards, newPair]);
+      numPair++;
+    }
   }
 
   return (
     <div className='App'>
       <div className='main-header-container'>
         <h1 id='main-header'>
-          Square Generator
+          Matching Pokemon
         </h1>
       </div>
-      <SquareForm addSquare={addSquare} />
-      <SquareList squares={squares} setSquares={setSquares}
-      />
+      <GameForm generatePairs={generatePairs} />
+      <GameContainer cards={cards} setCards={setCards} />
     </div>
   );
 }

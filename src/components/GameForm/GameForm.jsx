@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-const GameForm = ({ pokemon, setCards, clearCards }) => {
+const GameForm = ({ originalPokemon, setCards, clearCards }) => {
   const DEFAULT_NUM_MATCHES = 1;
   const DEFAULT_NUM_CARDS_MATCH = 2;
   const INITIAL_FORM_DATA = { numMatches: DEFAULT_NUM_MATCHES };
@@ -10,46 +10,24 @@ const GameForm = ({ pokemon, setCards, clearCards }) => {
 
   // https://medium.com/@will.software.engineer/generate-an-array-of-unique-non-repeating-elements-in-javascript-992b585da29a
   const getRandomPokemon = (numMatches) => {
-    let pokemonCopy = [...pokemon];
     let randomPokemon = [];
     for (let i = 0; i < numMatches; i++) {
-      let randNum = Math.floor(Math.random() * pokemonCopy.length);
-      let splicedPokemon = pokemonCopy.splice(randNum, 1)[0];
+      let randNum = Math.floor(Math.random() * originalPokemon.length);
+      let splicedPokemon = [...originalPokemon].splice(randNum, 1)[0];
       randomPokemon.push(splicedPokemon);
     }
     console.log({ randomPokemon });
     return randomPokemon;
   }
 
-  const getPokemonIds = (randomPokemon) => {
-    let pokemonIds = [];
-    const regex = /pokemon\/(\d+)/;
-    for (let pokemon of randomPokemon) {
-      let imageUrl = pokemon.url;
-      let regexMatch = imageUrl.match(regex);
-      if (regexMatch) {
-        let pokemonId = regexMatch[1];
-        pokemonIds.push(parseInt(pokemonId));
-      }
-      // TO DO: handle errors/edge cases
-      // return null;
-    }
-    return pokemonIds;
-  }
-
   const generateCards = (randomPokemon) => {
-    for (let i = 0; i < randomPokemon.length; i++) {
-      let pokemon = randomPokemon[i];
+    for (let pokemon of randomPokemon) {
       for (let j = 0; j < DEFAULT_NUM_CARDS_MATCH; j++) {
-        let pokemonIds = getPokemonIds(randomPokemon);
-        console.log({ pokemonIds });
-
-        // TO DO: fetchPokemonData (using pokemonId)
-
         let newCard = {
           id: uuidv4(),
+          pokemonId: pokemon.id,
           name: pokemon.name,
-          imageUrl: pokemon.url,
+          imageUrl: pokemon.imageUrl,
         };
         setCards((prevCards) => [...prevCards, newCard]);
       }

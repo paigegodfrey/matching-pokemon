@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-const Card = ({ card, count }) => {
-  const { name } = card;
+const Card = ({ card }) => {
+  const { name, imageUrl } = card;
 
   // css style variables
   let backgroundColor = 'lightBlue';
-  let cardSize = '100px';
+  let cardSize = '125px';
   let padding = '2px';
   let margin = '5px';
   let border = 'black solid 2px';
@@ -20,7 +20,8 @@ const Card = ({ card, count }) => {
         margin,
         border
       }}>
-      {`${count} - ${name}`}
+      {name}
+      <img src={imageUrl} alt={`${name} pic`} style={{height:`100px`}}/>
     </p >
   );
 }

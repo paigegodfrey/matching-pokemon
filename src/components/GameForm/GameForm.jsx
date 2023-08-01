@@ -17,16 +17,39 @@ const GameForm = ({ pokemon, setCards, clearCards }) => {
       let splicedPokemon = pokemonCopy.splice(randNum, 1)[0];
       randomPokemon.push(splicedPokemon);
     }
+    console.log({ randomPokemon });
     return randomPokemon;
+  }
+
+  const getPokemonIds = (randomPokemon) => {
+    let pokemonIds = [];
+    const regex = /pokemon\/(\d+)/;
+    for (let pokemon of randomPokemon) {
+      let imageUrl = pokemon.url;
+      let regexMatch = imageUrl.match(regex);
+      if (regexMatch) {
+        let pokemonId = regexMatch[1];
+        pokemonIds.push(parseInt(pokemonId));
+      }
+      // TO DO: handle errors/edge cases
+      // return null;
+    }
+    return pokemonIds;
   }
 
   const generateCards = (randomPokemon) => {
     for (let i = 0; i < randomPokemon.length; i++) {
       let pokemon = randomPokemon[i];
       for (let j = 0; j < DEFAULT_NUM_CARDS_MATCH; j++) {
+        let pokemonIds = getPokemonIds(randomPokemon);
+        console.log({ pokemonIds });
+
+        // TO DO: fetchPokemonData (using pokemonId)
+
         let newCard = {
           id: uuidv4(),
           name: pokemon.name,
+          imageUrl: pokemon.url,
         };
         setCards((prevCards) => [...prevCards, newCard]);
       }

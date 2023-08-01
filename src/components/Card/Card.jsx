@@ -1,22 +1,26 @@
 /* eslint-disable react/prop-types */
-const Card = () => {
+const Card = ({ count }) => {
   // const { id, color, size } = card;
-  
+
   // css style variables
+  let backgroundColor = 'lightBlue';
   let cardSize = '100px';
-  let marginTop = '5px';
+  let textAlign= 'center';
+  let margin = '5px';
   let border = 'black solid 2px';
 
   return (
     <p
       className='Card'
       style={{
-        backgroundColor: 'blue',
+        backgroundColor,
         height: cardSize,
         width: cardSize,
-        marginTop,
+        textAlign,
+        margin,
         border
       }}>
+      {count}
     </p >
   );
 }

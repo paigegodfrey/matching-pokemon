@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import Card from '../Card/Card';
 
-const GameContainer = ({ cards, setCards }) => {
-  const clearCards = () => setCards([]);
+const GameContainer = ({ cards, clearCards }) => {
 
   return (
     <div className='GameContainer'>
@@ -12,8 +11,8 @@ const GameContainer = ({ cards, setCards }) => {
         </button>
       </div>
       <div className='display-container' style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {cards.map((card) => (
-          <Card key={card?.id} />
+        {cards.map((card, idx) => (
+          <Card key={card?.id} count={idx + 1} />
         ))}
       </div>
     </div>

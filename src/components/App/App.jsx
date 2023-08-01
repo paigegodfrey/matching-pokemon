@@ -3,6 +3,16 @@ import axios from 'axios';
 import GameForm from '../GameForm/GameForm';
 import GameContainer from '../GameContainer/GameContainer';
 
+// load all pokemon on initial reder
+
+// onSubmit
+// select random numMatches indices ( <pokemon.length)
+// generate cards
+  // id
+  // pokemon img
+
+
+
 const App = () => {
   const NUM_ORIGINAL_POKEMON = 151;
 
@@ -40,7 +50,7 @@ const App = () => {
     fetchPokemon();
   }, []);
 
-  console.log(pokemon);
+  // console.log(pokemon);
 
   return (
     <div className='App'>
@@ -49,7 +59,7 @@ const App = () => {
           Matching Pokemon
         </h1>
       </div>
-      <GameForm setCards={setCards} clearCards={clearCards} />
+      <GameForm pokemon={pokemon} setCards={setCards} clearCards={clearCards} />
       <GameContainer cards={cards} clearCards={clearCards} />
     </div>
   );

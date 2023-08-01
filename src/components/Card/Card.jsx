@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-const Card = ({ count }) => {
-  // const { id, color, size } = card;
+const Card = ({ card, count }) => {
+  const { name } = card;
 
   // css style variables
   let backgroundColor = 'lightBlue';
   let cardSize = '100px';
-  let textAlign= 'center';
+  let padding = '2px';
   let margin = '5px';
   let border = 'black solid 2px';
 
@@ -16,11 +16,11 @@ const Card = ({ count }) => {
         backgroundColor,
         height: cardSize,
         width: cardSize,
-        textAlign,
+        padding,
         margin,
         border
       }}>
-      {count}
+      {`${count} - ${name}`}
     </p >
   );
 }

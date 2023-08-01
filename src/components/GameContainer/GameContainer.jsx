@@ -12,7 +12,7 @@ const GameContainer = ({ cards, clearCards }) => {
       </div>
       <div className='display-container' style={{ display: 'flex', flexWrap: 'wrap' }}>
         {cards.map((card, idx) => (
-          <Card key={card?.id} count={idx + 1} />
+          <Card key={card?.id} card={card} count={idx + 1} />
         ))}
       </div>
     </div>

@@ -10,13 +10,14 @@ const GameForm = ({ originalPokemon, setCards, clearCards }) => {
 
   // https://medium.com/@will.software.engineer/generate-an-array-of-unique-non-repeating-elements-in-javascript-992b585da29a
   const getRandomPokemon = (numMatches) => {
+    let originalPokemonCopy = [...originalPokemon];
     let randomPokemon = [];
     for (let i = 0; i < numMatches; i++) {
-      let randNum = Math.floor(Math.random() * originalPokemon.length);
-      let splicedPokemon = [...originalPokemon].splice(randNum, 1)[0];
+      let randNum = Math.floor(Math.random() * originalPokemonCopy.length);
+      let splicedPokemon = originalPokemonCopy.splice(randNum, 1)[0];
       randomPokemon.push(splicedPokemon);
     }
-    console.log({ randomPokemon });
+
     return randomPokemon;
   }
 

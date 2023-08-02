@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 const Card = ({ card }) => {
-  const { name, imageUrl } = card;
+  const { pokemonId, name, imageUrl } = card;
 
   // css style variables
   let backgroundColor = 'lightBlue';
@@ -20,7 +20,7 @@ const Card = ({ card }) => {
         margin,
         border
       }}>
-      {name}
+      {`${pokemonId}- ${name}`}
       <img src={imageUrl} alt={`${name} pic`} style={{height:`100px`}}/>
     </p >
   );

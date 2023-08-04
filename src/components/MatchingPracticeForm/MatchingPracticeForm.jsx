@@ -2,10 +2,15 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-const GameForm = ({ originalPokemon, setCards, clearCards }) => {
+const MatchingPracticeForm = ({ originalPokemon, setCards, clearCards }) => {
   const DEFAULT_NUM_MATCHES = 1;
   const DEFAULT_NUM_CARDS_MATCH = 2;
-  const INITIAL_FORM_DATA = { numMatches: DEFAULT_NUM_MATCHES };
+
+  const INITIAL_FORM_DATA = {
+    numCardsMatch: DEFAULT_NUM_CARDS_MATCH,
+    numMatches: DEFAULT_NUM_MATCHES,
+  };
+
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   // https://medium.com/@will.software.engineer/generate-an-array-of-unique-non-repeating-elements-in-javascript-992b585da29a
@@ -21,9 +26,9 @@ const GameForm = ({ originalPokemon, setCards, clearCards }) => {
     return randomPokemon;
   }
 
-  const generateCards = (randomPokemon) => {
+  const generateCards = (randomPokemon, numCardsMatch) => {
     for (let pokemon of randomPokemon) {
-      for (let j = 0; j < DEFAULT_NUM_CARDS_MATCH; j++) {
+      for (let j = 0; j < numCardsMatch; j++) {
         let newCard = {
           id: uuidv4(),
           pokemonId: pokemon.id,
@@ -38,8 +43,9 @@ const GameForm = ({ originalPokemon, setCards, clearCards }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     clearCards();
-    const randomPokemon = getRandomPokemon(formData.numMatches);
-    generateCards(randomPokemon);
+    const { numCardsMatch, numMatches } = formData;
+    const randomPokemon = getRandomPokemon(numMatches);
+    generateCards(randomPokemon, numCardsMatch);
   }
 
   const handleChange = (event) => {
@@ -47,16 +53,27 @@ const GameForm = ({ originalPokemon, setCards, clearCards }) => {
     setFormData(fData => ({ ...fData, [name]: value }));
   }
 
+  console.log({ formData });
+
   return (
-    <div className='GameForm'>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="numMatches">Number of Matches:</label>
+    <div className='MatchingPracticeForm'>
+      <form onSubmit={handleSubmit} >
+        <label htmlFor="numCardsMatch">numCardsMatch:</label>
+        <input
+          type="number"
+          name="numCardsMatch"
+          value={formData.numCardsMatch}
+          onChange={handleChange}
+        />
+        <br />
+        <label htmlFor="numMatches">numMatches:</label>
         <input
           type="number"
           name="numMatches"
           value={formData.numMatches}
           onChange={handleChange}
         />
+        <br />
         <button>
           Create
         </button>
@@ -65,4 +82,4 @@ const GameForm = ({ originalPokemon, setCards, clearCards }) => {
   );
 }
 
-export default GameForm;
+export default MatchingPracticeForm;

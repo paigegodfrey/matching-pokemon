@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import GameForm from '../GameForm/GameForm';
+import MatchingPracticeForm from '../MatchingPracticeForm/MatchingPracticeForm';
 import GameContainer from '../GameContainer/GameContainer';
 
 // TO DO: POKEMON DETAILS BY NAME
@@ -64,7 +64,7 @@ const App = () => {
           Matching Pokemon
         </h1>
       </div>
-      <GameForm
+      <MatchingPracticeForm
         originalPokemon={originalPokemon}
         setCards={setCards}
         clearCards={clearCards}
